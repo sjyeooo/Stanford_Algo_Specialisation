@@ -31,9 +31,8 @@
 *.suo
 *.sln
 *.tlog
-*.txt
 *.user
-*.vcxproj
+*.vcxproj*
 
 # Fortran module files
 *.mod
@@ -49,3 +48,6 @@
 *.exe
 *.out
 *.app
+
+# Matlab temp files
+*.asv
