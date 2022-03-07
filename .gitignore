@@ -51,3 +51,6 @@
 
 # Matlab temp files
 *.asv
+
+# Ignore g-test package
+gmock.1.11.0/
