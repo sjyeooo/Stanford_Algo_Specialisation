@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <vector>
 
 int main(const int argc, char* argv[])
 {
@@ -26,9 +27,8 @@ int main(const int argc, char* argv[])
 	}
 
 	int arr_input[MAX_QS_ARRAY_SIZE];
-	int arr_input_qsf[MAX_QS_ARRAY_SIZE];
-	int arr_input_qsm[MAX_QS_ARRAY_SIZE];
-	size_t arr_length = 0;
+	int arr_input_reset[MAX_QS_ARRAY_SIZE];
+	size_t arr_length{0};
 	std::string filename_test_file;
 	//Get test case filename from argument
 	filename_test_file = argv[1];
@@ -50,40 +50,36 @@ int main(const int argc, char* argv[])
 	std::cout << "size of file = " << arr_length << std::endl;
 	test_case_file.close();
 
-	//Copy input array for quick_sort_median
-	for (int i = 0; i < arr_length; i++)
-	{
-		arr_input_qsf[i] = arr_input[i];
-		arr_input_qsm[i] = arr_input[i];
-	}
-
 	/*
 	 * Running Algorithms
 	 */
 
-	//Quick Sort Algo
-	quick_sort qs_instance;
-	qs_instance.sort(arr_input, 0, arr_length - 1);
-	size_t number_compares_qs = qs_instance.get_number_compares();
+	std::vector<std::shared_ptr<quick_sort>> qs_list;
+	std::vector<size_t> number_compares_qs;
+	std::vector<bool> flag_sorted_qs;
+	std::vector<std::string> qs_type;
 
-	//Quick Sort Algo using final element to choose pivot
-	quick_sort_final qsf_instance;
-	qsf_instance.sort(arr_input_qsf, 0, arr_length - 1);
-	size_t number_compares_qsf = qsf_instance.get_number_compares();
+	qs_list.push_back(std::make_shared<quick_sort>());
+	qs_type.emplace_back("Quick Sort");
+	qs_list.push_back(std::make_shared<quick_sort_final>());
+	qs_type.emplace_back("Quick Sort Final");
+	qs_list.push_back(std::make_shared<quick_sort_median>());
+	qs_type.emplace_back("Quick Sort Median");
 
-	//Quick Sort Algo using median to choose pivot
-	quick_sort_median qsm_instance;
-	qsm_instance.sort(arr_input_qsm, 0, arr_length - 1);
-	size_t number_compares_qsm = qsm_instance.get_number_compares();
+	for (const auto& qs : qs_list)
+	{
+		for (int i = 0; i < arr_length; i++)
+		{
+			arr_input_reset[i] = arr_input[i];
+		}
+		qs->sort(arr_input_reset, 0, arr_length - 1);
+		number_compares_qs.push_back(qs->get_number_compares());
+		flag_sorted_qs.push_back(std::is_sorted(arr_input_reset, arr_input_reset + arr_length - 1));
+	}
 	
 	/*
 	 * Output results
 	 */
-
-	//Check if array is sorted
-	bool flag_sorted_qs = std::is_sorted(arr_input, arr_input + arr_length - 1);
-	bool flag_sorted_qsf = std::is_sorted(arr_input_qsf, arr_input_qsf + arr_length - 1);
-	bool flag_sorted_qsm = std::is_sorted(arr_input_qsm, arr_input_qsm + arr_length - 1);
 
 	//Open output file to write the results to file
 	const std::string file_output_sorted = "test_case_result.txt";
@@ -91,7 +87,7 @@ int main(const int argc, char* argv[])
 	if (test_sorted_file.is_open())
 	{
 		for (size_t i = 0; i < arr_length; i++)
-			test_sorted_file << arr_input[i] << std::endl;
+			test_sorted_file << arr_input_reset[i] << std::endl;
 	}
 	else
 	{
@@ -104,24 +100,15 @@ int main(const int argc, char* argv[])
 	std::ofstream test_result_file{ file_output_result };
 	if (test_result_file.is_open())
 	{
-		//Output for quick sort quick sort algo
-		test_result_file << "Quick Sort Algo:" << number_compares_qs << std::endl;
-		if (!flag_sorted_qs)
-			test_result_file << "SORTING ERROR FOR QUICK SORT" << std::endl;
-
-		test_result_file << std::endl;
-
-		//Output for quick sort quick sort final algo
-		test_result_file << "Quick Sort Final Algo:" << number_compares_qsf << std::endl;
-		if (!flag_sorted_qsf)
-			test_result_file << "SORTING ERROR FOR QUICK SORT FINAL ALGO" << std::endl;
-
-		test_result_file << std::endl;
-
-		//Output for quick sort quick sort median algo
-		test_result_file << "Quick Sort Median Algo:" << number_compares_qsm << std::endl;
-		if (!flag_sorted_qsm)
-			test_result_file << "SORTING ERROR FOR QUICK SORT MEDIAN ALGO" << std::endl;
+		for (int i = 0; i < qs_list.size(); i++)
+		{
+			test_result_file << qs_type[i] << " Algo:" << number_compares_qs[i] << std::endl;
+			if(!flag_sorted_qs[i])
+			{
+				test_result_file << "[SORTING ERROR] " << qs_type[i] << std::endl;
+			}
+			test_result_file << std::endl;
+		}
 	}
 	else
 	{
