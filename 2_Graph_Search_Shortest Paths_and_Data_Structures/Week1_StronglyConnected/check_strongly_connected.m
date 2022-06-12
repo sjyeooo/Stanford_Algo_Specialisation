@@ -1,10 +1,11 @@
 clc;clear;
+addpath './matlab/';
 
 %%
 DG = get_scc_graph();
 
-fprintf('Num Edges = %d\n',DG.numedges);
 fprintf('Num Vertex = %d\n',DG.numnodes);
+fprintf('Num Edges = %d\n',DG.numedges);
 
 has_duplicate_edge = ismultigraph(DG);
 
