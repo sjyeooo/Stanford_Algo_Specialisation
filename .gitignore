@@ -49,6 +49,12 @@
 *.out
 *.app
 
+# VSCode
+*.json
+
+# Build folders
+build/
+
 # Matlab temp files
 *.asv
 

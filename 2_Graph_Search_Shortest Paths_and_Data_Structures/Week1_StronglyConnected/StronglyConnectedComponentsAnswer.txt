@@ -1,0 +1,15 @@
+Opened ../../SCC.txt
+# vertices: 875714
+# edges:    5105043
+
+SCC sizes in descending order:
+434821
+968
+459
+313
+211
+205
+197
+177
+162
+152
