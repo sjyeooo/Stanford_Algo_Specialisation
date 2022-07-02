@@ -1,10 +1,8 @@
 #include "strongly_connected_components.h"
 
-strongly_connected_components::strongly_connected_components()
-{
-}
+strongly_connected_components::strongly_connected_components() = default;
 
-strongly_connected_components::strongly_connected_components(std::shared_ptr<NGraph::tGraph<size_t>> graph,
+strongly_connected_components::strongly_connected_components(const std::shared_ptr<NGraph::tGraph<size_t>> &graph,
 															 std::shared_ptr<NGraph::tGraph<size_t>> graph_reverse) :
 	graph_(graph),
 	graph_reverse_(graph_reverse)
@@ -15,9 +13,7 @@ strongly_connected_components::strongly_connected_components(std::shared_ptr<NGr
 	dfs_visit_order_ = std::make_unique<std::list<size_t>>();
 }
 
-strongly_connected_components::~strongly_connected_components()
-{
-}
+strongly_connected_components::~strongly_connected_components() = default;
 
 void strongly_connected_components::run()
 {

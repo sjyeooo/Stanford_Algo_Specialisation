@@ -7,7 +7,7 @@
 #include "ngraph.hpp"
 #include "strongly_connected_components.h"
 
-int main(int argc, char *argv[])
+auto main(int argc, char *argv[]) -> int
 {
 	// Require just one argument.
 	// Exit and print error if this is not the case.

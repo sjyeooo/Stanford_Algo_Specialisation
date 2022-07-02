@@ -8,7 +8,7 @@ class strongly_connected_components
 {
   public:
 	strongly_connected_components();
-	strongly_connected_components(std::shared_ptr<NGraph::tGraph<size_t>> graph,
+	strongly_connected_components(const std::shared_ptr<NGraph::tGraph<size_t>> &graph,
 								  std::shared_ptr<NGraph::tGraph<size_t>> graph_reverse);
 
 	~strongly_connected_components();
