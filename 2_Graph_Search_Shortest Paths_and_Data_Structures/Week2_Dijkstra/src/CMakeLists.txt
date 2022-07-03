@@ -1,0 +1,1 @@
+add_library (dijkstra_algo dijkstra.h dijkstra.cpp)
