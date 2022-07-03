@@ -6,10 +6,6 @@ dijkstra::dijkstra(const std::shared_ptr<graph<std::ptrdiff_t, std::size_t>> &Gr
 	m_graph(Graph),
 	m_src(src)
 {
-	// Have not visited any vertex
-	visited.reserve(m_graph->amount_vertices());
-	std::fill_n(std::back_inserter(visited), m_graph->amount_vertices(), false);
-
 	// Initialise parent and distances
 	for (const auto vertex : m_graph->vertex_ids())
 	{

@@ -22,8 +22,7 @@ class dijkstra
 	auto construct_path(std::ptrdiff_t target_vertex_id) const -> std::vector<std::ptrdiff_t>;
 	std::shared_ptr<graph<std::ptrdiff_t, std::size_t>> m_graph;
 
-	std::ptrdiff_t m_src{};
-	std::vector<bool> visited;
+	std::ptrdiff_t m_src;
 	std::unordered_map<std::ptrdiff_t, std::ptrdiff_t> m_vertex_parent_id;
 	std::unordered_map<std::ptrdiff_t, std::ptrdiff_t> m_vertex_distance;
 
