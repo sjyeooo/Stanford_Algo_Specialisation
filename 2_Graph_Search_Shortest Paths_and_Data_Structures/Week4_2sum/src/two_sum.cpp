@@ -37,3 +37,11 @@ auto two_sum::run(std::vector<int64_t> &targets) -> std::size_t
 
 	return count;
 }
+
+auto two_sum::run(int64_t target) -> bool
+{
+	std::vector<int64_t> targets{target};
+	const auto result = run(targets);
+
+	return (result > 0);
+}

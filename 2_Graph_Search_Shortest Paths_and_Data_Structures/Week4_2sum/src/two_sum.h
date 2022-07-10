@@ -16,6 +16,8 @@ class two_sum
 
 	auto run(std::vector<int64_t> &targets) -> std::size_t;
 
+	auto run(int64_t target) -> bool;
+
   private:
 	std::unordered_multiset<int64_t> data;
 };
