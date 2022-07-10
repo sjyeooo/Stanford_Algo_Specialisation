@@ -1,0 +1,1 @@
+add_library (two_sum_algo two_sum.h two_sum.cpp)

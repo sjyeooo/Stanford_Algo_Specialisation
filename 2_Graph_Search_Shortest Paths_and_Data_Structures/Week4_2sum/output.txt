@@ -1,0 +1,4 @@
+Opened ../../2sum.txt
+elapsed time: 0.731 -- Completed Inserting into Hash Table
+elapsed time: 1449.36 -- Completed Targets
+count = 427
