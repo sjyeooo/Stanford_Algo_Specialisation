@@ -1,0 +1,6 @@
+Opened ../jobs.txt
+elapsed time: 0.002 -- Completed Inserting into Vector
+elapsed time: 0.002 -- Completed Algo 1
+algo 1 result = 69119377652
+elapsed time: 0.003 -- Completed Algo 2
+algo 2 result = 67311454237
