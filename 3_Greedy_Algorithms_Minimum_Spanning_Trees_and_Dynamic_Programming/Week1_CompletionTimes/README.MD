@@ -9,4 +9,4 @@ This folder contains a program that finds the minimum completion time for a numb
 
 To run and test it out for yourself, run the batch file 
 ```
-run_2sum.bat
+run_greedy.bat
