@@ -1,0 +1,4 @@
+Opened ../../edges.txt
+elapsed time: 0.002 -- Completed Inserting into Graph
+cost = -3612829
+elapsed time: 0.004 -- Completed Prim MST
