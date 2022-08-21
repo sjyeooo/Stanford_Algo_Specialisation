@@ -1,0 +1,9 @@
+﻿---
+BasedOnStyle: Microsoft
+AllowAllConstructorInitializersOnNextLine: 'false'
+BreakConstructorInitializers: AfterColon
+ConstructorInitializerAllOnOneLineOrOnePerLine: 'true'
+TabWidth: '4'
+UseTab: Always
+
+...
